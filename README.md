@@ -65,4 +65,4 @@ Untuk memanfaatkan informasi ini, ditambahkan variabel baru bernama **`deck_know
 
 ## 📂 Catatan
 FILE RAW = https://colab.research.google.com/drive/1-8XgpdgzRZ3yL4nKs0G46cTKtPL1TybI#scrollTo=btn0BuO-Fcus
-FILE HASIL IMPROVE DAN MODIFIKASI = https://colab.research.google.com/drive/1tR_G5_v8mrXpNr3sUX-w-JRlUlMT-3Qs?usp=sharing
+FILE HASIL IMPROVE DAN MODIFIKASI = [https://colab.research.google.com/drive/1tR_G5_v8mrXpNr3sUX-w-JRlUlMT-3Qs?usp=sharing](https://colab.research.google.com/drive/1hNbRPk2X7ZBWXGnChskCq88-ir9wGDVD?usp=sharing)
