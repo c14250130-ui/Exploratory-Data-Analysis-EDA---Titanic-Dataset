@@ -16,9 +16,9 @@ Untuk memanfaatkan informasi ini, ditambahkan variabel baru bernama **`deck_know
   - `0` → deck tidak diketahui  
 
 ### Alasan Penambahan
-- Kolom `deck` memiliki missing values sangat banyak, sehingga sulit digunakan langsung dalam analisis.  
+- Kolom `deck` memiliki banyak missing values, sehingga sulit digunakan langsung dalam analisis.  
 - Dengan mengubahnya menjadi variabel boolean (`deck_known`), kita dapat:
-  - Mengukur **kualitas data** (apakah informasi dek tersedia).  
+  - Mengukur **kualitas data** (apakah informasi deck tersedia).  
   - Menghubungkan informasi keberadaan dek dengan **kelas penumpang** dan **peluang selamat (survival rate)**.  
 - Hipotesis: Penumpang dengan **deck diketahui** kemungkinan besar berasal dari **kelas lebih tinggi (1 atau 2)**, sehingga berpeluang lebih besar untuk selamat.
 
@@ -27,18 +27,30 @@ Untuk memanfaatkan informasi ini, ditambahkan variabel baru bernama **`deck_know
 ## 🔎 Analisis `deck_known` dengan Variabel Lain
 
 ### 1. `deck_known` vs `survived`
-- Hasil analisis menunjukkan bahwa penumpang dengan **deck diketahui (1)** memiliki **survival rate lebih tinggi** dibanding penumpang dengan **deck tidak diketahui (0)**.  
+- Penumpang dengan **deck diketahui (1)** memiliki **survival rate lebih tinggi** dibanding penumpang dengan **deck tidak diketahui (0)**.  
 - Hal ini konsisten dengan sejarah Titanic, di mana penumpang kelas atas ditempatkan di dek atas dan lebih dulu dievakuasi.
 
+📊 **Visualisasi**  
+*(tempat untuk barplot `deck_known` vs `survived`)*
+
+---
+
 ### 2. `deck_known` vs `pclass`
-- Korelasi terlihat jelas:  
-  - Penumpang **kelas 1** dan **kelas 2** lebih banyak memiliki `deck_known = 1`.  
-  - Penumpang **kelas 3** mayoritas `deck_known = 0`.  
+- Penumpang **kelas 1** dan **kelas 2** lebih banyak memiliki `deck_known = 1`.  
+- Penumpang **kelas 3** mayoritas `deck_known = 0`.  
 - Artinya, `deck_known` bisa menjadi indikator **sosial-ekonomi** yang mirip dengan `pclass`.
+
+📊 **Visualisasi**  
+*(tempat untuk countplot / crosstab heatmap `deck_known` vs `pclass`)*
+
+---
 
 ### 3. `deck_known` vs `fare`
 - Penumpang dengan `deck_known = 1` cenderung membayar **fare (tarif tiket) lebih mahal**.  
 - Hal ini sejalan dengan logika bahwa kelas atas (lebih mahal) tercatat lebih lengkap, termasuk informasi dek.
+
+📊 **Visualisasi**  
+*(tempat untuk boxplot / violin plot `fare` berdasarkan `deck_known`)*
 
 ---
 
@@ -53,5 +65,5 @@ Untuk memanfaatkan informasi ini, ditambahkan variabel baru bernama **`deck_know
 
 ## 🚀 Rekomendasi Lanjutan
 - Gunakan `deck_known` sebagai salah satu variabel input dalam **model prediksi survival**.  
-- Lakukan **uji korelasi numerik** (misalnya dengan point-biserial correlation) antara `deck_known` dan variabel numerik seperti `fare` dan `survived`.  
+- Lakukan **uji korelasi numerik** (misalnya point-biserial correlation) antara `deck_known` dan variabel numerik (`fare`, `survived`).  
 - Gabungkan dengan variabel lain seperti `sex`, `pclass`, dan `age` untuk membangun model machine learning yang lebih akurat.
