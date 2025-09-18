@@ -63,7 +63,6 @@ Untuk memanfaatkan informasi ini, ditambahkan variabel baru bernama **`deck_know
 
 ---
 
-## 🚀 Rekomendasi Lanjutan
-- Gunakan `deck_known` sebagai salah satu variabel input dalam **model prediksi survival**.  
-- Lakukan **uji korelasi numerik** (misalnya point-biserial correlation) antara `deck_known` dan variabel numerik (`fare`, `survived`).  
-- Gabungkan dengan variabel lain seperti `sex`, `pclass`, dan `age` untuk membangun model machine learning yang lebih akurat.
+## 📂 Catatan
+FILE RAW = https://colab.research.google.com/drive/1-8XgpdgzRZ3yL4nKs0G46cTKtPL1TybI#scrollTo=btn0BuO-Fcus
+FILE HASIL IMPROVE DAN MODIFIKASI = https://colab.research.google.com/drive/1tR_G5_v8mrXpNr3sUX-w-JRlUlMT-3Qs?usp=sharing
