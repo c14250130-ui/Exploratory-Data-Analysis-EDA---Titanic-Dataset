@@ -41,7 +41,7 @@ Untuk memanfaatkan informasi ini, ditambahkan variabel baru bernama **`deck_know
 - Artinya, `deck_known` bisa menjadi indikator **sosial-ekonomi** yang mirip dengan `pclass`.
 
 📊 **Visualisasi**  
-*(tempat untuk countplot / crosstab heatmap `deck_known` vs `pclass`)*
+![pclass](https://github.com/c14250130-ui/Exploratory-Data-Analysis-EDA---Titanic-Dataset/blob/main/Screenshot%202025-09-18%20115805.png)
 
 ---
 
