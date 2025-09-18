@@ -50,7 +50,7 @@ Untuk memanfaatkan informasi ini, ditambahkan variabel baru bernama **`deck_know
 - Hal ini sejalan dengan logika bahwa kelas atas (lebih mahal) tercatat lebih lengkap, termasuk informasi dek.
 
 📊 **Visualisasi**  
-*(tempat untuk boxplot / violin plot `fare` berdasarkan `deck_known`)*
+![fare](https://github.com/c14250130-ui/Exploratory-Data-Analysis-EDA---Titanic-Dataset/blob/main/Screenshot%202025-09-18%20115822.png)
 
 ---
 
