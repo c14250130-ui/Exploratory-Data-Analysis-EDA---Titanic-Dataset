@@ -31,7 +31,7 @@ Untuk memanfaatkan informasi ini, ditambahkan variabel baru bernama **`deck_know
 - Hal ini konsisten dengan sejarah Titanic, di mana penumpang kelas atas ditempatkan di dek atas dan lebih dulu dievakuasi.
 
 📊 **Visualisasi**  
-*(tempat untuk barplot `deck_known` vs `survived`)*
+![survive](https://github.com/c14250130-ui/Exploratory-Data-Analysis-EDA---Titanic-Dataset/blob/main/Screenshot%202025-09-18%20115751.png)
 
 ---
 
