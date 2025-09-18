@@ -1,76 +1,57 @@
-# 🛳️ Exploratory Data Analysis (EDA) - Titanic Dataset
+# 🛳️ Exploratory Data Analysis (EDA) Titanic - Penambahan Variabel Baru `deck_known`
 
 ## 📌 Latar Belakang
-Dataset **Titanic** adalah salah satu dataset paling populer untuk pembelajaran analisis data dan machine learning.  
-Dataset ini berisi informasi tentang penumpang Titanic, termasuk usia, jenis kelamin, kelas, tarif tiket, serta apakah penumpang tersebut selamat atau tidak.
-
-Analisis ini bertujuan untuk memahami pola data, missing values, distribusi variabel, serta faktor-faktor yang memengaruhi kemungkinan penumpang untuk selamat.
-
----
-
-## 📂 Langkah Analisis
-
-### 1. Import Library dan Load Dataset
-- Digunakan library: **Pandas, Numpy, Matplotlib, Seaborn**
-- Dataset Titanic dimuat langsung dari **Seaborn** (`sns.load_dataset('titanic')`).
-
-### 2. Data Preparation
-- Membuat variabel baru `sex_numeric`:  
-  - `male = 1`  
-  - `female = 0`  
-
-- Membuat variabel baru `deck_known`:  
-  - `1 = informasi deck tersedia`  
-  - `0 = informasi deck tidak tersedia`
-
-### 3. Informasi Dataset
-- Dataset terdiri dari **891 baris** dan **15 kolom** (sebelum penambahan variabel baru).
-- Terdapat missing values pada beberapa kolom, terutama:
-  - `age`
-  - `deck`
-  - `embark_town`
-
-### 4. Analisis Missing Values
-- Missing values divisualisasikan dengan **heatmap**.
-- Kolom `deck` memiliki missing values terbanyak.
-
-### 5. Analisis Variabel Kategorik
-- Distribusi penumpang berdasarkan **jenis kelamin**: mayoritas adalah laki-laki.
-- Distribusi **survival** menunjukkan lebih banyak penumpang yang **tidak selamat**.
-- Distribusi berdasarkan **kelas (pclass)**: kelas 3 paling banyak.
-
-### 6. Analisis Variabel Numerik
-- **Usia (age)** berdistribusi dengan puncak pada usia muda hingga dewasa.
-- **Boxplot age vs pclass**: penumpang kelas 1 cenderung lebih tua dibanding kelas 3.
-- **Fare (tarif)** memiliki banyak outlier (beberapa tiket sangat mahal).
-
-### 7. Analisis Korelasi
-- Korelasi antar variabel numerik divisualisasikan dengan **heatmap**.
-- `fare` berkorelasi negatif dengan `pclass` → semakin tinggi kelas, semakin mahal tarif tiket.
-- `sex_numeric` berkorelasi dengan `survived` → perempuan lebih banyak selamat.
-
-### 8. Analisis Hubungan Antar Variabel
-- **Scatter plot age vs fare** menunjukkan sebagian besar penumpang dengan tarif mahal berada di kelas lebih tinggi.
-- **Pairplot** memperlihatkan hubungan antar `age`, `fare`, dan `pclass` dengan label `survived`.
-
-### 9. Variabel Baru: `deck_known`
-- Penambahan variabel baru `deck_known` (1 jika deck diketahui, 0 jika tidak).
-- Hasil analisis:
-  - Penumpang dengan **deck diketahui** memiliki survival rate lebih tinggi.  
-  - Hal ini masuk akal karena penumpang dengan informasi deck biasanya berasal dari kelas 1 atau 2 (kelas atas).
+Dataset **Titanic** menyediakan informasi tentang penumpang kapal Titanic, seperti usia, jenis kelamin, kelas, tarif, dan status keselamatan (survived).  
+Namun, dataset ini juga memiliki kolom `deck` yang banyak mengandung **missing values**.  
+Untuk memanfaatkan informasi ini, ditambahkan variabel baru bernama **`deck_known`**.
 
 ---
 
-## 📊 Kesimpulan Sementara
-- **Jenis kelamin** berpengaruh besar terhadap survival → perempuan lebih banyak selamat.  
-- **Kelas penumpang** berhubungan dengan survival → kelas 1 lebih tinggi peluang selamatnya dibanding kelas 3.  
-- **Variabel baru `deck_known`** memberikan insight tambahan → penumpang dengan deck diketahui (kelas lebih tinggi) cenderung lebih banyak selamat.  
-- Missing values cukup signifikan, terutama pada kolom `deck` dan `age`, sehingga perlu penanganan sebelum digunakan untuk modeling machine learning.
+## 🆕 Variabel Baru: `deck_known`
+
+### Definisi
+- **`deck_known`** adalah variabel biner (0 atau 1) yang menunjukkan apakah informasi dek tempat penumpang berada **diketahui** atau **tidak**.  
+- **Nilai variabel:**
+  - `1` → deck diketahui  
+  - `0` → deck tidak diketahui  
+
+### Alasan Penambahan
+- Kolom `deck` memiliki missing values sangat banyak, sehingga sulit digunakan langsung dalam analisis.  
+- Dengan mengubahnya menjadi variabel boolean (`deck_known`), kita dapat:
+  - Mengukur **kualitas data** (apakah informasi dek tersedia).  
+  - Menghubungkan informasi keberadaan dek dengan **kelas penumpang** dan **peluang selamat (survival rate)**.  
+- Hipotesis: Penumpang dengan **deck diketahui** kemungkinan besar berasal dari **kelas lebih tinggi (1 atau 2)**, sehingga berpeluang lebih besar untuk selamat.
 
 ---
 
-## 📌 Catatan
-Analisis ini masih bersifat eksploratif.  
-Tahap selanjutnya bisa berupa:
-- **Data preprocessing lebih lanjut** (imputasi missing values, encoding variabel kategorik).
-- **Modeling machine learning** untuk memprediksi `survived`.
+## 🔎 Analisis `deck_known` dengan Variabel Lain
+
+### 1. `deck_known` vs `survived`
+- Hasil analisis menunjukkan bahwa penumpang dengan **deck diketahui (1)** memiliki **survival rate lebih tinggi** dibanding penumpang dengan **deck tidak diketahui (0)**.  
+- Hal ini konsisten dengan sejarah Titanic, di mana penumpang kelas atas ditempatkan di dek atas dan lebih dulu dievakuasi.
+
+### 2. `deck_known` vs `pclass`
+- Korelasi terlihat jelas:  
+  - Penumpang **kelas 1** dan **kelas 2** lebih banyak memiliki `deck_known = 1`.  
+  - Penumpang **kelas 3** mayoritas `deck_known = 0`.  
+- Artinya, `deck_known` bisa menjadi indikator **sosial-ekonomi** yang mirip dengan `pclass`.
+
+### 3. `deck_known` vs `fare`
+- Penumpang dengan `deck_known = 1` cenderung membayar **fare (tarif tiket) lebih mahal**.  
+- Hal ini sejalan dengan logika bahwa kelas atas (lebih mahal) tercatat lebih lengkap, termasuk informasi dek.
+
+---
+
+## 📊 Kesimpulan
+- Variabel baru **`deck_known`** adalah cara sederhana namun efektif untuk memanfaatkan informasi kolom `deck` yang banyak missing values.  
+- Analisis menunjukkan:
+  - `deck_known` berhubungan positif dengan **survival**.  
+  - `deck_known` berkorelasi dengan variabel **pclass** dan **fare**, karena kelas atas lebih banyak memiliki deck yang tercatat.  
+- Dengan demikian, **`deck_known` dapat menjadi prediktor tambahan** yang relevan untuk memodelkan peluang keselamatan penumpang Titanic.
+
+---
+
+## 🚀 Rekomendasi Lanjutan
+- Gunakan `deck_known` sebagai salah satu variabel input dalam **model prediksi survival**.  
+- Lakukan **uji korelasi numerik** (misalnya dengan point-biserial correlation) antara `deck_known` dan variabel numerik seperti `fare` dan `survived`.  
+- Gabungkan dengan variabel lain seperti `sex`, `pclass`, dan `age` untuk membangun model machine learning yang lebih akurat.
